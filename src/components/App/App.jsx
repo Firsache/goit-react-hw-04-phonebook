@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+// import { useArrayHandler } from 'hooks/useArrayHandler';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
 import { Container, Title } from './App.styled';
@@ -63,31 +64,15 @@ export function App() {
 }
 
 // export function App() {
-//   const [contacts, setContacts] = useState(
-//     JSON.parse(localStorage.getItem('contacts')) ?? []
-//   );
+//   const {
+//     array: contacts,
+//     addNewObj: addContact,
+//     deleteObj: deleteContact,
+//   } = useArrayHandler('contacts');
 //   const [filteredName, setFilteredName] = useState('');
 
-//   useEffect(() => {
-//     localStorage.setItem('contacts', JSON.stringify(contacts));
-//   }, [contacts]);
-
-//   const addContact = ({ name, number }) => {
-//     if (contacts.some(c => c.name === name)) {
-//       alert(`Contact ${name} already exists!`);
-//       return;
-//     }
-//     if (contacts.some(c => c.number === number)) {
-//       alert(`Contact ${number} already exists!`);
-//       return;
-//     }
-//     setContacts(prevState => [{ id: nanoid(4), name, number }, ...prevState]);
-//   };
-
-//   const deleteContact = contactId => {
-//     const newContacts = contacts.filter(c => c.id !== contactId);
-//     setContacts(newContacts);
-//   };
+//   addContact({ name, number });
+//   deleteContact(contactId);
 
 //   const handleFilter = event => {
 //     setFilteredName(event.target.value);
