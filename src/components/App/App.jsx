@@ -56,7 +56,7 @@ export function App() {
 
   return (
     <Box as="section" theme={normalizedTheme}>
-      <Box position="relative" py={3} as="div">
+      <Box position="relative" py={4} as="div">
         <Title>Phonebook</Title>
         <ThemeSwitcher switchTheme={switchTheme} themeTitle={themeTitle} />
       </Box>
