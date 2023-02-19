@@ -4,12 +4,26 @@ import { useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
 import { Container, Title } from './App.styled';
-import { GlobalStyles } from 'styles/globalStyles.styled';
-import { Contacts, Form, Filter, Section, Notification } from '../index';
+import { GlobalStyles } from 'styles/GlobalStyles/globalStyles.styled';
+import { colors } from 'styles/colors';
+import { theme } from '../../styles/theme';
+import {
+  Contacts,
+  Form,
+  Filter,
+  Section,
+  Notification,
+  ThemeSwitcher,
+} from '../index';
 
 export function App() {
   const [contacts, setContacts] = useLocalStorage('contacts', []);
   const [filteredName, setFilteredName] = useState('');
+  const [themeTitle, setThemeTitle] = useState('light');
+
+  const switchTheme = () => {
+    setThemeTitle(prevState => (prevState === 'light' ? 'dark' : 'light'));
+  };
 
   const addContact = ({ name, number }) => {
     if (contacts.some(c => c.name === name)) {
@@ -37,10 +51,12 @@ export function App() {
       contact.name.toLowerCase().includes(filteredName.toLowerCase())
     );
   };
+  const normalizedTheme = { ...theme, ...colors[themeTitle] };
 
   return (
-    <Container>
+    <Container theme={normalizedTheme}>
       <Title>Phonebook</Title>
+      <ThemeSwitcher switchTheme={switchTheme} themeTitle={themeTitle} />
       <Form addContact={addContact} />
       <Section title="Contacts">
         {contacts.length > 0 ? (
