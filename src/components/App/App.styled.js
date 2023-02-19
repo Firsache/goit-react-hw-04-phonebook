@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 40px auto;
+  margin: 0 auto;
   padding: 30px 20px;
 
   min-width: 400px;
@@ -14,7 +14,6 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  padding-bottom: 20px;
   font-weight: 600;
   font-size: 38px;
   letter-spacing: 1.2px;
