@@ -14,9 +14,6 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  /* font-size: ${p => p.theme.fontSizes.l};
-  font-weight: ${p => p.theme.fontWeights.bold};
-  line-height: ${p => p.theme.lineHeights.heading}; */
   font-weight: 600;
   font-size: 38px;
   letter-spacing: 1.2px;
@@ -24,3 +21,7 @@ export const Title = styled.h2`
   text-shadow: 6px 6px 6px #000;
   text-align: center;
 `;
+
+/* font-size: ${p => p.theme.fontSizes.l};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  line-height: ${p => p.theme.lineHeights.heading}; */

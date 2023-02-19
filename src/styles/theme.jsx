@@ -10,11 +10,6 @@ export const theme = {
   //     muted: '#f6f6f6',
   //   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
-  // fonts: {
-  //   body: 'Roboto, sans-serif',
-  //   heading: 'system-ui, sans-serif',
-  //   monospace: 'Menlo, monospace',
-  // },
   fontSizes: {
     xs: '12px',
     s: '14px',
