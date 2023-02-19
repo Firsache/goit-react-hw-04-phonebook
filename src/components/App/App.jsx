@@ -14,6 +14,7 @@ import {
   Section,
   Notification,
   ThemeSwitcher,
+  Box,
 } from '../index';
 
 export function App() {
@@ -54,28 +55,32 @@ export function App() {
   const normalizedTheme = { ...theme, ...colors[themeTitle] };
 
   return (
-    <Container theme={normalizedTheme}>
-      <Title>Phonebook</Title>
-      <ThemeSwitcher switchTheme={switchTheme} themeTitle={themeTitle} />
-      <Form addContact={addContact} />
-      <Section title="Contacts">
-        {contacts.length > 0 ? (
-          <Contacts
-            contacts={getFilteredContacts()}
-            deleteContact={deleteContact}
-          >
-            {contacts.length > 1 ? (
-              <Filter value={filteredName} filterChange={handleFilter} />
-            ) : (
-              ''
-            )}
-          </Contacts>
-        ) : (
-          <Notification message="There are no contacts in the phonebook yet..." />
-        )}
-      </Section>
-      <GlobalStyles />
-    </Container>
+    <Box as="section" theme={normalizedTheme}>
+      <Box position="relative" py={3} as="div">
+        <Title>Phonebook</Title>
+        <ThemeSwitcher switchTheme={switchTheme} themeTitle={themeTitle} />
+      </Box>
+      <Container>
+        <Form addContact={addContact} />
+        <Section title="Contacts">
+          {contacts.length > 0 ? (
+            <Contacts
+              contacts={getFilteredContacts()}
+              deleteContact={deleteContact}
+            >
+              {contacts.length > 1 ? (
+                <Filter value={filteredName} filterChange={handleFilter} />
+              ) : (
+                ''
+              )}
+            </Contacts>
+          ) : (
+            <Notification message="There are no contacts in the phonebook yet..." />
+          )}
+        </Section>
+        <GlobalStyles />
+      </Container>
+    </Box>
   );
 }
 
