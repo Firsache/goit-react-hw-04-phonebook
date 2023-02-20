@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     font-style: normal;
+    color: ${p => p.theme.colors.text};
     background-color: ${p => p.theme.colors.backgroundColor};
   }
   h1,
