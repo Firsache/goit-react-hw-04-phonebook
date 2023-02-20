@@ -1,4 +1,4 @@
-// export * from 'components/Layout/Layout.jsx';
+export * from 'components/Layout/Layout.jsx';
 export * from 'components/Contacts/Contacts.jsx';
 export * from 'components/Form/Form.jsx';
 export * from 'components/Filter/Filter';
