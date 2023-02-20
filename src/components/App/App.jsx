@@ -1,6 +1,5 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-// import { useArrayHandler } from 'hooks/useArrayHandler';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
 import { Container, Title } from './App.styled';
@@ -8,6 +7,7 @@ import { GlobalStyles } from 'styles/GlobalStyles/globalStyles.styled';
 import { colors } from 'styles/colors';
 import { theme } from '../../styles/theme';
 import {
+  Layout,
   Contacts,
   Form,
   Filter,
@@ -55,77 +55,33 @@ export function App() {
   const normalizedTheme = { ...theme, ...colors[themeTitle] };
 
   return (
-    <Box as="section" theme={normalizedTheme}>
-      <Box position="relative" py={4} as="div">
-        <Title>Phonebook</Title>
-        <ThemeSwitcher switchTheme={switchTheme} themeTitle={themeTitle} />
+    <Layout theme={normalizedTheme}>
+      <Box as="section">
+        <Box position="relative" py={4} as="div">
+          <Title>Phonebook</Title>
+          <ThemeSwitcher switchTheme={switchTheme} themeTitle={themeTitle} />
+        </Box>
+        <Container>
+          <Form addContact={addContact} />
+          <Section title="Contacts">
+            {contacts.length > 0 ? (
+              <Contacts
+                contacts={getFilteredContacts()}
+                deleteContact={deleteContact}
+              >
+                {contacts.length > 1 ? (
+                  <Filter value={filteredName} filterChange={handleFilter} />
+                ) : (
+                  ''
+                )}
+              </Contacts>
+            ) : (
+              <Notification message="There are no contacts in the phonebook yet..." />
+            )}
+          </Section>
+          <GlobalStyles />
+        </Container>
       </Box>
-      <Container>
-        <Form addContact={addContact} />
-        <Section title="Contacts">
-          {contacts.length > 0 ? (
-            <Contacts
-              contacts={getFilteredContacts()}
-              deleteContact={deleteContact}
-            >
-              {contacts.length > 1 ? (
-                <Filter value={filteredName} filterChange={handleFilter} />
-              ) : (
-                ''
-              )}
-            </Contacts>
-          ) : (
-            <Notification message="There are no contacts in the phonebook yet..." />
-          )}
-        </Section>
-        <GlobalStyles />
-      </Container>
-    </Box>
+    </Layout>
   );
 }
-
-// export function App() {
-//   const {
-//     array: contacts,
-//     addNewObj: addContact,
-//     deleteObj: deleteContact,
-//   } = useArrayHandler('contacts');
-//   const [filteredName, setFilteredName] = useState('');
-
-//   addContact({ name, number });
-//   deleteContact(contactId);
-
-//   const handleFilter = event => {
-//     setFilteredName(event.target.value);
-//   };
-
-//   const getFilteredContacts = () => {
-//     return contacts.filter(contact =>
-//       contact.name.toLowerCase().includes(filteredName.toLowerCase())
-//     );
-//   };
-
-//   return (
-//     <Container>
-//       <Title>Phonebook</Title>
-//       <Form addContact={addContact} />
-//       <Section title="Contacts">
-//         {contacts.length > 0 ? (
-//           <Contacts
-//             contacts={getFilteredContacts()}
-//             deleteContact={deleteContact}
-//           >
-//             {contacts.length > 1 ? (
-//               <Filter value={filteredName} filterChange={handleFilter} />
-//             ) : (
-//               ''
-//             )}
-//           </Contacts>
-//         ) : (
-//           <Notification message="There are no contacts in the phonebook yet..." />
-//         )}
-//       </Section>
-//       <GlobalStyles />
-//     </Container>
-//   );
-// }
