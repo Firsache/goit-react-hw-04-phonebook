@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
-  padding: 20px;
+  padding: ${p => p.theme.space[4]}px;
   padding-top: 0;
 
   &:last-of-type {
@@ -10,10 +10,10 @@ export const Wrapper = styled.section`
 `;
 
 export const Title = styled.h2`
-  padding-bottom: 15px;
-  font-weight: 600;
-  font-size: 30px;
-  letter-spacing: 1.2px;
-  text-shadow: 2px 2px 2px #ff6b08;
+  padding-bottom: ${p => p.theme.space[3]}px;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.l};
+
+  text-shadow: 3px 3px 3px ${p => p.theme.colors.accent};
   text-align: ${({ titlePosition }) => titlePosition};
 `;
