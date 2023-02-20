@@ -10,59 +10,65 @@ export const FormComponent = styled.form`
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding-bottom: 20px;
+  gap: ${p => p.theme.space[2]}px;
+  padding-bottom: ${p => p.theme.space[4]}px;
 `;
 
 export const Span = styled.span`
-  font-size: 18px;
+  font-size: ${p => p.theme.fontSizes.m};
 `;
 export const Input = styled.input`
-  padding: 5px 5px 5px 10px;
+  padding: ${p => p.theme.space[2]}px;
+  padding-left: ${p => p.theme.space[3]}px;
   width: 250px;
-  border: 2px solid #000000;
-  border-radius: 3px;
+
+  color: ${p => p.theme.colors.text};
+  border: ${p => p.theme.space[1]}px solid ${p => p.theme.colors.text};
+  border-radius: ${p => p.theme.space[2]}px;
+
   background-color: transparent;
-  font-size: 16px;
-  transition: border-color 200ms ease-in-out, outline-color 200ms ease-in-out;
+  font-size: ${p => p.theme.fontSizes.m};
+  transition: border-color ${p => p.theme.transition},
+    outline-color ${p => p.theme.transition};
 
   &:hover {
-    border-color: #ff6b08;
-    outline-color: #ff6b08;
+    border-color: ${p => p.theme.colors.accent};
+    outline-color: ${p => p.theme.colors.accent};
     background-color: transparent;
   }
   &:focus {
-    border-color: #ff6b08;
-    outline-color: #ff6b08;
+    border-color: ${p => p.theme.colors.accent};
+    outline-color: ${p => p.theme.colors.accent};
     background-color: transparent;
   }
 `;
 
 export const Button = styled.button`
-  padding: 7px 5px;
+  padding: ${p => p.theme.space[3]}px ${p => p.theme.space[2]}px;
   width: 120px;
-  height: 32px;
+  height: ${p => p.theme.space[5]}px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-size: 16px;
-  line-height: 1.3px;
+  font-size: ${p => p.theme.fontSizes.m};
+  line-height: ${p => p.theme.lineHeights.body}px;
   text-align: center;
-  background-color: #ff6b08;
-  color: #ffffff;
-  border-radius: 3px;
-  border: 2px solid #ff6b08;
+
+  background-color: ${p => p.theme.colors.accent};
+  color: ${p => p.theme.colors.white};
+  border-radius: ${p => p.theme.space[2]}px;
+  border: ${p => p.theme.space[1]}px solid ${p => p.theme.colors.accent};
   outline: none;
 
-  transition: background-color 200ms ease-in-out, color 200ms ease-in-out,
-    transform 200ms ease-in-out;
+  transition: background-color ${p => p.theme.transition},
+    color ${p => p.theme.transition}, transform ${p => p.theme.transition};
 
   &:hover,
   &:focus {
     background-color: transparent;
-    color: #000000;
+    color: ${p => p.theme.colors.text};
     transform: translateY(-2px);
   }
 `;
